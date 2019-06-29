@@ -58,3 +58,13 @@ class TestFromHtml:
             ('Et dolor vel quis quos voluptas nesciunt porro ipsa esse quia quae tempore aliquid magni delectus, '
              'perferendis possimus, labore veritatis!'),
         ]
+
+    def test_multiple_paragraphs(self):
+        with open(fixture_path / 'multiple_paragraphs.html', mode='r', encoding='utf-8') as f:
+            html = f.read()
+
+        assert from_html(html) == [
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            'Example site.'
+        ]

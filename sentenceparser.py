@@ -5,6 +5,7 @@ from textblob import TextBlob
 
 
 def normalize_sentence(sentence: str) -> str:
+    sentence = sentence.strip()
     sentence = re.sub(r'\s+', ' ', sentence)
 
     return sentence
