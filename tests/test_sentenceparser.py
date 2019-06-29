@@ -1,4 +1,14 @@
-from sentenceparser import from_text, from_html
+from pathlib import Path
+
+from sentenceparser import normalize_sentence, from_text, from_html
+
+fixture_path = Path(__file__).parent / 'fixtures'
+
+
+class TestNormalizeSentence:
+    def test(self):
+        sentence = 'Et dolor vel quis quos voluptas nesciunt\n    porro ipsa esse quia quae!'
+        assert normalize_sentence(sentence) == 'Et dolor vel quis quos voluptas nesciunt porro ipsa esse quia quae!'
 
 
 class TestFromText:
@@ -33,33 +43,15 @@ class TestFromText:
 
 class TestFromHtml:
     def test_one_sentence(self):
-        html = """<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-</body>
-</html>"""
+        with open(fixture_path / 'one_sentence.html', mode='r', encoding='utf-8') as f:
+            html = f.read()
+
         assert from_html(html) == ['Lorem ipsum dolor sit, amet consectetur adipisicing elit.']
 
     def test_multiple_sentences(self):
-        html = """<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, magni. Et dolor vel quis quos voluptas nesciunt porro ipsa esse quia quae tempore aliquid magni delectus, perferendis possimus, labore veritatis!</p>
-</body>
-</html>"""
+        with open(fixture_path / 'multiple_sentences.html', mode='r', encoding='utf-8') as f:
+            html = f.read()
+
         assert from_html(html) == [
             'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
             'Assumenda, magni.',

@@ -1,11 +1,22 @@
+import re
+
 from bs4 import BeautifulSoup
 from textblob import TextBlob
+
+
+def normalize_sentence(sentence: str) -> str:
+    sentence = re.sub(r'\s+', ' ', sentence)
+
+    return sentence
 
 
 def from_text(text: str) -> list:
     blob = TextBlob(text)
 
-    return [str(sentence) for sentence in blob.sentences]
+    sentences = [str(sentence) for sentence in blob.sentences]
+    sentences = [normalize_sentence(sentence) for sentence in sentences]
+
+    return sentences
 
 
 def from_html(html: str) -> list:
