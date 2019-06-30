@@ -30,8 +30,17 @@ def from_html(path):
 
 @click.command()
 @click.argument('url')
-def from_url(url: str):
-    for sentence in sentenceparser.from_url(url):
+@click.option('--line-number/--no-line-number', default=False)
+def from_url(url: str, line_number: bool):
+    sentences = sentenceparser.from_url(url)
+
+    if line_number:
+        for i, sentence in enumerate(sentences, start=1):
+            click.echo(f'{i}: {sentence}')
+
+        return
+
+    for sentence in sentences:
         click.echo(sentence)
 
 

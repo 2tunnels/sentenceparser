@@ -22,6 +22,7 @@ class TestIsProperSentence:
     def test_wrong_sentence(self):
         assert not is_proper_sentence('Example usage:')
         assert not is_proper_sentence('© 2019 Example.com.')
+        assert not is_proper_sentence('Contact us: support @ example.com')
 
 
 class TestFromText:

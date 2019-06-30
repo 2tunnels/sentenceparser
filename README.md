@@ -28,6 +28,12 @@ Parse sentences from URL using CLI:
 sentenceparser from-url 'https://example.com/'
 ```
 
+Parse sentences from URL using CLI and add line numbers for each sentence:
+
+```bash
+sentenceparser from-url 'https://example.com/' --line-number
+```
+
 Parse sentences from text file using Python API:
 
 ```python

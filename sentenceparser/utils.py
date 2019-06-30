@@ -15,7 +15,8 @@ def normalize_sentence(sentence: str) -> str:
 
 
 def is_proper_sentence(sentence: str) -> bool:
-    if re.match(r'^\w(.*?)[.!?]', sentence):
+    """Check if given sentence starts with letter and ends with some punctuation mark."""
+    if re.match(r'^\w(.*?)[.!?]$', sentence):
         return True
 
     return False
@@ -28,6 +29,7 @@ def from_text(text: str) -> list:
 
     sentences = [str(sentence) for sentence in blob.sentences]
     sentences = [normalize_sentence(sentence) for sentence in sentences]
+    sentences = [sentence for sentence in sentences if is_proper_sentence(sentence)]
 
     return sentences
 
