@@ -19,7 +19,7 @@ sentenceparser from-text ~/Documents/text.txt
 Parse sentences from HTML file using CLI:
 
 ```bash
-sentenceparser from-text ~/Documents/site.html
+sentenceparser from-html ~/Documents/site.html
 ```
 
 Parse sentences from URL using CLI:
