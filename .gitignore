@@ -1,3 +1,6 @@
 /.idea/
 /.pytest_cache/
+/build/
+/dist/
+/sentenceparser.egg-info/
 __pycache__/

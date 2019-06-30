@@ -7,7 +7,7 @@ Parsing sentences from text, HTML or URL.
 Pull:
 
 ```bash
-git pull
+git pull git@github.com:2tunnels/sentenceparser.git
 ```
 
 Install:

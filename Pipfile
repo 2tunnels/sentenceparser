@@ -11,6 +11,7 @@ requests = ">=2.22.0,<3.0"
 
 [dev-packages]
 pytest = ">=4.6.3,<5.0"
+twine = ">=1.13.0,<2.0"
 
 [requires]
 python_version = "3.7"
