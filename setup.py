@@ -29,6 +29,7 @@ setup(
         'beautifulsoup4>=4.7.1,<5.0',
         'lxml>=4.3.4,<5.0',
         'requests>=2.22.0,<3.0',
+        'click>=7.0,<8.0',
     ],
     entry_points={
         'console_scripts': [
