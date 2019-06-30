@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from sentenceparser.utils import normalize_sentence, from_text, from_html
+from sentenceparser.utils import normalize_sentence, is_proper_sentence, from_text, from_html
 
 fixture_path = Path(__file__).parent / 'fixtures'
 
@@ -9,6 +9,19 @@ class TestNormalizeSentence:
     def test(self):
         sentence = 'Et dolor vel quis quos voluptas nesciunt\n    porro ipsa esse quia quae!'
         assert normalize_sentence(sentence) == 'Et dolor vel quis quos voluptas nesciunt porro ipsa esse quia quae!'
+
+
+class TestIsProperSentence:
+    def test_proper_sentence(self):
+        assert is_proper_sentence('This domain is established to be used for illustrative examples in documents.')
+        assert is_proper_sentence('More information...')
+        assert is_proper_sentence('Hello world!')
+        assert is_proper_sentence('How are you?')
+        assert is_proper_sentence('Программирование - это круто!')
+
+    def test_wrong_sentence(self):
+        assert not is_proper_sentence('Example usage:')
+        assert not is_proper_sentence('© 2019 Example.com.')
 
 
 class TestFromText:

@@ -14,6 +14,13 @@ def normalize_sentence(sentence: str) -> str:
     return sentence
 
 
+def is_proper_sentence(sentence: str) -> bool:
+    if re.match(r'^\w(.*?)[.!?]', sentence):
+        return True
+
+    return False
+
+
 def from_text(text: str) -> list:
     """Parse sentence list from text."""
 
