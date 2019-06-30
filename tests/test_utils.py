@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from sentenceparser import normalize_sentence, from_text, from_html
+from sentenceparser.utils import normalize_sentence, from_text, from_html
 
 fixture_path = Path(__file__).parent / 'fixtures'
 
